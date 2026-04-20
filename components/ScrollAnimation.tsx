@@ -4,7 +4,8 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { FloatingNav } from './FloatingNav';
 
 // ─── Configuration ───────────────────────────────────────────────────────────
-const VIDEO_SRC = '/scroll-video.mp4';
+const BASE_PATH = '/siet_cse_inceptron_landing_page';
+const VIDEO_SRC = `${BASE_PATH}/scroll-video.mp4`;
 // Pixels of scroll per second of video
 const SCROLL_PX_PER_SECOND = 600;
 // Target FPS for frame extraction (higher = smoother but more memory)
