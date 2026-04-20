@@ -78,44 +78,47 @@ export function ScrollAnimation() {
 
   // ─── Buttery smooth render loop ─────────────────────────────────────────
   const renderLoop = useCallback(() => {
-    const container = containerRef.current;
-    if (!container || totalFrames.current === 0) {
-      rafId.current = requestAnimationFrame(renderLoop);
-      return;
-    }
+    const tick = () => {
+      const container = containerRef.current;
+      if (!container || totalFrames.current === 0) {
+        rafId.current = requestAnimationFrame(tick);
+        return;
+      }
 
-    // Calculate scroll progress
-    const containerRect = container.getBoundingClientRect();
-    const scrollableHeight = container.offsetHeight - window.innerHeight;
-    let rawProgress = 0;
-    if (scrollableHeight > 0) {
-      rawProgress = -containerRect.top / scrollableHeight;
-    }
-    const progress = Math.max(0, Math.min(1, rawProgress));
+      // Calculate scroll progress
+      const containerRect = container.getBoundingClientRect();
+      const scrollableHeight = container.offsetHeight - window.innerHeight;
+      let rawProgress = 0;
+      if (scrollableHeight > 0) {
+        rawProgress = -containerRect.top / scrollableHeight;
+      }
+      const progress = Math.max(0, Math.min(1, rawProgress));
 
-    // Target frame from scroll position
-    targetFrame.current = progress * (totalFrames.current - 1);
+      // Target frame from scroll position
+      targetFrame.current = progress * (totalFrames.current - 1);
 
-    // Lerp toward target (this is what makes it buttery)
-    const diff = targetFrame.current - currentFrame.current;
-    if (Math.abs(diff) > 0.05) {
-      currentFrame.current += diff * LERP_FACTOR;
-    } else {
-      currentFrame.current = targetFrame.current;
-    }
+      // Lerp toward target (this is what makes it buttery)
+      const diff = targetFrame.current - currentFrame.current;
+      if (Math.abs(diff) > 0.05) {
+        currentFrame.current += diff * LERP_FACTOR;
+      } else {
+        currentFrame.current = targetFrame.current;
+      }
 
-    // Snap to nearest integer frame for drawing
-    const frameIdx = Math.round(
-      Math.max(0, Math.min(totalFrames.current - 1, currentFrame.current))
-    );
+      // Snap to nearest integer frame for drawing
+      const frameIdx = Math.round(
+        Math.max(0, Math.min(totalFrames.current - 1, currentFrame.current))
+      );
 
-    // Only redraw if frame changed (skip identical frames = no wasted GPU work)
-    if (frameIdx !== lastDrawnFrame.current) {
-      drawFrame(frameIdx);
-      lastDrawnFrame.current = frameIdx;
-    }
+      // Only redraw if frame changed (skip identical frames = no wasted GPU work)
+      if (frameIdx !== lastDrawnFrame.current) {
+        drawFrame(frameIdx);
+        lastDrawnFrame.current = frameIdx;
+      }
 
-    rafId.current = requestAnimationFrame(renderLoop);
+      rafId.current = requestAnimationFrame(tick);
+    };
+    tick();
   }, [drawFrame]);
 
   // ─── Ensure overflow is not hidden ──────────────────────────────────────
