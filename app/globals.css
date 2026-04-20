@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  /* Do NOT set overflow: hidden on html/body — it breaks position: sticky */
+}
+
+/* Cindie Mono font family utility */
+.font-cindie {
+  font-family: 'Cindie Mono', monospace;
+}
