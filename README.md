@@ -2,6 +2,8 @@
 
 A premium, high-performance landing page built with Next.js 14, featuring a "buttery smooth" scroll-driven cinematic animation.
 
+**[🌐 View Live Demo](https://nitish-r-g.github.io/siet_cse_inceptron_landing_page/)**
+
 ![CSE Inceptron Hero](public/scroll-video.mp4) <!-- Replace with a GIF or Image if available -->
 
 ## 🚀 The "Buttery Smooth" Approach
