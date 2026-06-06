@@ -1,0 +1,65 @@
+{
+  "repository": {
+    "name": "siet_inceptron_landingpage",
+    "version": "0.1.0",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "eslint"
+    }
+  },
+  "frameworks": [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "TypeScript"
+  ],
+  "libraries": [
+    "next",
+    "react",
+    "react-dom",
+    "@semantic-release/changelog",
+    "@semantic-release/git",
+    "@semantic-release/release-notes-generator",
+    "@tailwindcss/postcss",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "dependency-cruiser",
+    "eslint",
+    "eslint-config-next",
+    "fs-extra",
+    "glob",
+    "madge",
+    "openai",
+    "semantic-release",
+    "tailwindcss",
+    "typescript"
+  ],
+  "structure": [
+    "tsconfig.json",
+    "postcss.config.mjs",
+    "package.json",
+    "package-lock.json",
+    "next.config.ts",
+    "eslint.config.mjs",
+    "README.md",
+    "CLAUDE.md",
+    "AGENTS.md",
+    "scripts/repo-analyzer.js",
+    "public/scroll-video.mp4",
+    "components/ScrollAnimation.tsx",
+    "components/FrameLoader.tsx",
+    "components/FloatingNav.tsx",
+    "app/page.tsx",
+    "app/layout.tsx",
+    "app/globals.css"
+  ],
+  "envVariables": [],
+  "architecture": {
+    "services": [],
+    "apis": [],
+    "databases": []
+  }
+}
