@@ -1,0 +1,23 @@
+{
+  "$schema": "https://unpkg.com/knip@3/schema.json",
+  "entry": ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  "project": ["**/*.{ts,tsx}"],
+  "ignoreDependencies": [
+    "@microsoft/eslint-formatter-sarif",
+    "@secretlint/secretlint-rule-aws",
+    "@secretlint/secretlint-rule-basicauth",
+    "@secretlint/secretlint-rule-gcp",
+    "@secretlint/secretlint-rule-github",
+    "@secretlint/secretlint-rule-npm",
+    "@secretlint/secretlint-rule-pattern",
+    "@secretlint/secretlint-rule-preset-recommend",
+    "@secretlint/secretlint-rule-privatekey",
+    "@secretlint/secretlint-rule-sendgrid",
+    "@secretlint/secretlint-rule-slack",
+    "@secretlint/secretlint-rule-stripe",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+    "tailwindcss",
+    "npm-check-updates"
+  ]
+}

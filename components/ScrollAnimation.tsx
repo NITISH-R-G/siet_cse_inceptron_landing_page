@@ -32,7 +32,9 @@ export function ScrollAnimation() {
 
   const [isReady, setIsReady] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
-  const [loadStage, setLoadStage] = useState<'downloading' | 'extracting'>('downloading');
+  const [loadStage, setLoadStage] = useState<'downloading' | 'extracting'>(
+    'downloading'
+  );
   const [videoDuration, setVideoDuration] = useState(0);
 
   // ─── Canvas sizing ──────────────────────────────────────────────────────
@@ -142,8 +144,11 @@ export function ScrollAnimation() {
       video.crossOrigin = 'anonymous';
 
       // Wait for metadata
+
       await new Promise<void>((resolve, reject) => {
+        // eslint-disable-next-line sonarjs/no-nested-functions
         video.onloadedmetadata = () => resolve();
+        // eslint-disable-next-line sonarjs/no-nested-functions
         video.onerror = () => reject(new Error('Video load failed'));
       });
 
@@ -152,7 +157,9 @@ export function ScrollAnimation() {
 
       // Wait for full buffer
       setLoadStage('downloading');
+
       await new Promise<void>((resolve) => {
+        // eslint-disable-next-line sonarjs/no-nested-functions
         const check = () => {
           if (video.readyState >= 4) {
             resolve();
@@ -166,6 +173,7 @@ export function ScrollAnimation() {
           }
           setTimeout(check, 100);
         };
+        // eslint-disable-next-line sonarjs/no-nested-functions
         video.oncanplaythrough = () => resolve();
         check();
       });
@@ -193,7 +201,9 @@ export function ScrollAnimation() {
         video.currentTime = time;
 
         // Wait for seek to complete
+
         await new Promise<void>((resolve) => {
+          // eslint-disable-next-line sonarjs/no-nested-functions
           video.onseeked = () => resolve();
         });
 

@@ -40,17 +40,20 @@ Traditional scroll-driven video animations often feel "choppy" because browsers 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/NITISH-R-G/siet_cse_inceptron_landing_page.git
    cd siet_cse_inceptron_landing_page
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Run the development server:
+
    ```bash
    npm run dev
    ```

@@ -1,0 +1,6 @@
+{
+  "threshold": 0,
+  "reporters": ["html", "console"],
+  "ignore": ["node_modules/**", ".next/**", "out/**", "public/**"],
+  "absolute": true
+}
