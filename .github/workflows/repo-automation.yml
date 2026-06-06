@@ -1,0 +1,52 @@
+name: Repository Automation & Self-Documentation
+
+on:
+  push:
+    branches: [ "main" ]
+  schedule:
+    # Run daily at midnight
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze-and-document:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Graphviz (for diagrams)
+        run: sudo apt-get install -y graphviz
+
+      - name: Run Repository Analyzer
+        run: node scripts/repo-analyzer.js
+
+      - name: Generate Architecture Diagrams
+        run: node scripts/generate-diagrams.js
+
+      - name: Run AI Documentation Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/ai-doc-agent.js
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: auto-update repository documentation and diagrams [skip ci]"
+          file_pattern: "README.md docs/ .repo-metadata/"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
