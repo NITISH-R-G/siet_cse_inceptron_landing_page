@@ -17,6 +17,7 @@
   ],
   "libraries": [
     "next",
+    "postcss",
     "react",
     "react-dom",
     "@semantic-release/changelog",
@@ -48,13 +49,18 @@
     "CLAUDE.md",
     "AGENTS.md",
     "scripts/repo-analyzer.js",
+    "scripts/generate-diagrams.js",
+    "scripts/ai-doc-agent.js",
     "public/scroll-video.mp4",
     "components/ScrollAnimation.tsx",
     "components/FrameLoader.tsx",
     "components/FloatingNav.tsx",
     "app/page.tsx",
     "app/layout.tsx",
-    "app/globals.css"
+    "app/globals.css",
+    "docs/architecture/madge-graph.svg",
+    "docs/architecture/madge-graph.dot",
+    "docs/architecture/dependency-graph.svg"
   ],
   "envVariables": [],
   "architecture": {
