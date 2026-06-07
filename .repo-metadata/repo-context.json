@@ -47,6 +47,7 @@
     "eslint.config.mjs",
     "README.md",
     "CLAUDE.md",
+    "CHANGELOG.md",
     "AGENTS.md",
     "scripts/repo-analyzer.js",
     "scripts/generate-diagrams.js",
